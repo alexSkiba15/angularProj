@@ -1,20 +1,21 @@
 <h1 class="text-center">Cars</h1>
-<table class="table table-striped table-light text-center m-4">
+<button class="btn btn-primary" id="add-car-button" routerLink="{{'add/'}}">New Car</button>
+<table class="table table-striped table-light text-center">
   <thead>
-    <tr>
-      <th>№</th>
-      <th>Brand</th>
-      <th>Model</th>
-      <th>Price</th>
-      <th>Year</th>
-    </tr>
+  <tr>
+    <th>№</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Price</th>
+    <th>Year</th>
+  </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let b of cars | async; let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{b.brand}}</td>
-      <td>{{b.model}}</td>
-      <td>{{b.price | currency}}</td>
-      <td>{{b.date | date}}</td>
+  <tr *ngFor="let b of cars | async; let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{b.brand}}</td>
+    <td>{{b.model}}</td>
+    <td>{{b.price | currency}}</td>
+    <td>{{b.date | date:('yyyy')}}</td>
   </tbody>
 </table>

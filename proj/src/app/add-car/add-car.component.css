@@ -1,0 +1,17 @@
+h1 {
+  margin-top: 200px;
+}
+
+input {
+  margin-left: 40%;
+  width: 400px;
+}
+
+.button {
+  position: absolute;
+  left: 53%;
+}
+
+.button button {
+  margin-right: 10px;
+}

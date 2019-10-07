@@ -1,0 +1,28 @@
+<h1 class="text-center">Create Car</h1>
+
+<form (ngSubmit)="onSubmit()" class="text-center">
+  <div class="form-group">
+    <label for="InputBrand">Brand</label>
+    <input required type="text" class="form-control" id="InputBrand" name="brand" [(ngModel)]="car.brand"
+           placeholder="Enter car brand">
+  </div>
+  <div class="form-group">
+    <label for="InputModel">Model</label>
+    <input required type="text" class="form-control" name="brand" id="InputModel" [(ngModel)]="car.model"
+           placeholder="Enter car model">
+  </div>
+  <div class="form-group">
+    <label for="InputPrice">Price</label>
+    <input required type="number" class="form-control" name="0" id="InputPrice" [(ngModel)]="car.price"
+           placeholder="Enter car price">
+  </div>
+  <div class="form-group">
+    <label for="InputYear">Year</label>
+    <input required type="date" class="form-control" name="data" id="InputYear" [(ngModel)]="car.date"
+           placeholder="Enter car year">
+  </div>
+  <div class="button">
+    <button class="btn btn-primary" routerLink="../">Back</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
