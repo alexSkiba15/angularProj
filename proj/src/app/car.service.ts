@@ -1,4 +1,4 @@
-import {Inject, Injectable, InjectionToken} from '@angular/core';
+import {Injectable, InjectionToken} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Car} from './car';
@@ -20,8 +20,6 @@ export class CarService {
   }
 
   createCar(car: object): Observable<object> {
-    console.log(`${this.baseUrl}/add`, car, this.httpHeaders);
-    debugger;
     return this.http.post(`${this.baseUrl}/add`, car, this.httpHeaders);
   }
 }

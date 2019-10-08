@@ -3,24 +3,22 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing';
-import {AddCarComponent} from './add-car/add-car.component';
-import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import {CoreComponent} from './core/core.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {CoreModule} from './core/core.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddCarComponent,
-    CoreComponent,
     NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CoreModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,14 @@ input {
   width: 400px;
 }
 
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+select {
+  width: 400px;
+}
+
 .button {
   position: absolute;
   left: 53%;
@@ -14,4 +22,8 @@ input {
 
 .button button {
   margin-right: 10px;
+}
+
+span {
+  color: red;
 }
