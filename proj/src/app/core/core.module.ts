@@ -7,6 +7,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from '../app.routing';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import {
+  MatButtonModule,
+  MatButtonToggleModule, MatFormFieldModule,
+  MatIconModule,
+  MatOptionModule,
+  MatPaginatorModule, MatSelectModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [CoreComponent, AddCarComponent],
@@ -16,7 +25,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
+    NgxSpinnerModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [],
 })

@@ -51,9 +51,27 @@
     <label for="InputYear">Year</label>
     <input type="date" class="form-control mx-auto" name="data" id="InputYear"
            placeholder="Enter car year" formControlName="inputYear">
+    <div
+      *ngIf="form.controls.inputYear.invalid && form.controls.inputYear.touched
+              && form.controls.inputYear.value === ''">
+      <span>Year cannot be empty</span>
+    </div>
+    <div *ngIf="!(form.controls.inputYear.value === '')
+                  && form.controls.inputYear.touched
+                  && form.controls.inputYear.hasError('restrictedYear')">
+      <span>Year cannot be more 2020 and less 1900</span>
+    </div>
   </div>
   <div class="button">
     <button type="button" class="btn btn-primary" routerLink="../">Back</button>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
   </div>
 </form>
+
+<ngx-spinner type="ball-spin-clockwise-fade"
+             [fullScreen]="true" bdOpacity=0.9
+             bdColor="#333"
+             size="medium"
+             color="#fff">
+  <p style="color: white">Please wait.<br/>Create Car</p>
+</ngx-spinner>

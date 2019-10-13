@@ -2,24 +2,31 @@ import {Injectable, InjectionToken} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Car} from './car';
+import {Table} from './table';
 
 export const REST_URL = new InjectionToken('rest_url');
+const httpHeaders = {
+  headers: new HttpHeaders(
+    {'Content-type': 'application/json'})
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
   private baseUrl = 'http://localhost:8000/cars';
-  private httpHeaders = {headers: new HttpHeaders({'Content-type': 'application/json'})};
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
+
+  getCars(): Observable<Table> {
+    return this.http.get<Table>(`${this.baseUrl}/`, httpHeaders);
   }
 
-  getCars(): Observable<Car[]> {
-    return this.http.get<Car[]>(`${this.baseUrl}/`, this.httpHeaders);
+  createCar(car: Car): Observable<Car> {
+    return this.http.post<Car>(`${this.baseUrl}/add`, car, httpHeaders);
   }
 
-  createCar(car: object): Observable<object> {
-    return this.http.post(`${this.baseUrl}/add`, car, this.httpHeaders);
+  deleteCar(id: number): Observable<Car> {
+    return this.http.delete<Car>(`${this.baseUrl}/delete/` + id);
   }
 }

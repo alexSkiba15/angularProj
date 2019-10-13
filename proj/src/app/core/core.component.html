@@ -8,14 +8,33 @@
     <th>Model</th>
     <th>Price</th>
     <th>Year</th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let b of cars | async; let i = index">
+  <tr *ngFor="let b of cars; let i = index">
     <td>{{i + 1}}</td>
     <td>{{b.brand}}</td>
     <td>{{b.model}}</td>
     <td>{{b.price | currency: 'USD':'symbol': '.2-2'}}</td>
     <td>{{b.date | date:('yyyy')}}</td>
+    <td>
+      <mat-icon (click)="b.edit=!b.edit">create</mat-icon>
+      <mat-icon (click)="openDeleteWindow(); carId= b.id">delete</mat-icon>
+      <div *ngIf="deleteWindow" class="delete-alert">
+        <h4>Delete this report?</h4>
+        <button class="btn btn-primary" (click)="closeDeleteWindow()">Cancel</button>
+        <button class="btn btn-danger" (click)="deleteCar()">Yes</button>
+      </div>
+    </td>
   </tbody>
 </table>
+
+
+<ngx-spinner type = "ball-spin-clockwise-fade"
+             [fullScreen] = "true" bdOpacity = 0.9
+             bdColor = "#333"
+             size = "medium"
+             color = "#fff">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>

@@ -22,3 +22,23 @@ table {
   margin-left: 5%;
   margin-right: 5%;
 }
+
+.delete-alert {
+  position: fixed;
+  z-index: 93123999;
+  bottom: 40%;
+  left: 39%;
+  height: 150px;
+  width: 350px;
+  background-color: #7bd6ff;
+  border: 6px solid #9f0000;
+  border-radius: 10px;
+}
+
+.delete-alert h4 {
+  text-align: center;
+}
+
+.delete-alert button {
+  margin-left: 5px; margin-top: 50px;
+}

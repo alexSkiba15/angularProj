@@ -7,6 +7,8 @@ import {FormsModule} from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {CoreModule} from './core/core.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     CoreModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
