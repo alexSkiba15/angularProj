@@ -1,6 +1,6 @@
-<h1 class="text-center">Create Car</h1>
+<h1 class="text-center" *ngIf="!carCreated">Create Car</h1>
 
-<form (ngSubmit)="onSubmit()" class="text-center mx-auto" [formGroup]="form">
+<form (ngSubmit)="onSubmit()" class="text-center mx-auto" [formGroup]="form" *ngIf="!carCreated">
   <div class="form-group">
     <label for="SelectBrand">Brand</label>
     <br>
@@ -68,10 +68,18 @@
   </div>
 </form>
 
+<div class="text-center success mx-auto" *ngIf="carCreated">
+    <ngb-alert class="text-center" [dismissible]="false" [type]="'success'">
+      <h3>Car created successfully</h3>
+      <button class="btn btn-primary" routerLink="../">Back to table</button>
+      <button class="btn btn-primary" (click)="carCreated = false">Add more</button>
+    </ngb-alert>
+</div>
+
 <ngx-spinner type="ball-spin-clockwise-fade"
              [fullScreen]="true" bdOpacity=0.9
              bdColor="#333"
              size="medium"
              color="#fff">
-  <p style="color: white">Please wait.<br/>Create Car</p>
+  <p style="color: white">Please wait.<br/> Create Car</p>
 </ngx-spinner>

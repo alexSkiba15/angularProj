@@ -9,16 +9,11 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {
-  MatButtonModule,
-  MatButtonToggleModule, MatFormFieldModule,
-  MatIconModule,
-  MatOptionModule,
-  MatPaginatorModule, MatSelectModule
-} from '@angular/material';
+import {MatIconModule} from '@angular/material';
+import {JwPaginationComponent} from 'jw-angular-pagination';
 
 @NgModule({
-  declarations: [CoreComponent, AddCarComponent],
+  declarations: [CoreComponent, AddCarComponent, JwPaginationComponent],
   imports: [
     BrowserModule,
     RouterModule,
@@ -28,13 +23,7 @@ import {
     ReactiveFormsModule,
     NgbModule,
     NgxSpinnerModule,
-    MatButtonModule,
-    MatButtonToggleModule,
     MatIconModule,
-    MatPaginatorModule,
-    MatOptionModule,
-    MatFormFieldModule,
-    MatSelectModule,
   ],
   providers: [],
 })

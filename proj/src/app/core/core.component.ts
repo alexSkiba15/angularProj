@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Car} from '../car';
-import {Observable} from 'rxjs';
 import {CarService} from '../car.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 
@@ -13,6 +12,7 @@ export class CoreComponent implements OnInit {
   cars: Car[];
   deleteWindow: boolean;
   carId: number;
+  pageOfItems: Array<Car>;
 
   constructor(private carService: CarService, private spinner: NgxSpinnerService) {
     this.deleteWindow = false;
@@ -37,8 +37,7 @@ export class CoreComponent implements OnInit {
     this.closeDeleteWindow();
     this.spinner.show();
     this.carService.deleteCar(this.carId)
-      .subscribe((data) => {
-          console.log(data);
+      .subscribe(() => {
           this.spinner.hide();
           this.reloadData();
         },
@@ -51,5 +50,9 @@ export class CoreComponent implements OnInit {
 
   openDeleteWindow() {
     this.deleteWindow = true;
+  }
+
+  onChangePage(pageOfItems: Array<Car>) {
+    this.pageOfItems = pageOfItems;
   }
 }

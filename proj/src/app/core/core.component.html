@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let b of cars; let i = index">
+  <tr *ngFor="let b of pageOfItems; let i = index">
     <td>{{i + 1}}</td>
     <td>{{b.brand}}</td>
     <td>{{b.model}}</td>
@@ -30,11 +30,14 @@
   </tbody>
 </table>
 
+<div class="btn-group float-right mr-5">
+  <jw-pagination pageSize="15" [items]="cars" (changePage)="onChangePage($event)"></jw-pagination>
+</div>
 
-<ngx-spinner type = "ball-spin-clockwise-fade"
-             [fullScreen] = "true" bdOpacity = 0.9
-             bdColor = "#333"
-             size = "medium"
-             color = "#fff">
+<ngx-spinner type="ball-spin-clockwise-fade"
+             [fullScreen]="true" bdOpacity=0.9
+             bdColor="#333"
+             size="medium"
+             color="#fff">
   <p style="color: white">Loading...</p>
 </ngx-spinner>

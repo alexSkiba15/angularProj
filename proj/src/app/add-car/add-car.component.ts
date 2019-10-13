@@ -13,8 +13,10 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class AddCarComponent implements OnInit {
   car: Car;
   form: FormGroup;
+  carCreated: boolean;
 
   constructor(private carService: CarService, private spinner: NgxSpinnerService) {
+    this.carCreated = false;
     this.car = new Car();
   }
 
@@ -53,11 +55,12 @@ export class AddCarComponent implements OnInit {
       this.carService.createCar(this.car)
         .subscribe((data) => {
             console.log(data);
+            this.carCreated = true;
             this.spinner.hide();
           },
           error => console.log(error));
       this.car = new Car();
-    }, 5000);
+    }, 1000);
     this.form.reset({selectBrand: this.car.brand});
   }
 }
