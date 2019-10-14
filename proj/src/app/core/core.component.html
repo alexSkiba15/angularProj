@@ -19,8 +19,8 @@
     <td>{{b.price | currency: 'USD':'symbol': '.2-2'}}</td>
     <td>{{b.date | date:('yyyy')}}</td>
     <td>
-      <mat-icon (click)="b.edit=!b.edit">create</mat-icon>
-      <mat-icon (click)="openDeleteWindow(); carId= b.id">delete</mat-icon>
+      <mat-icon [routerLink]="['edit/', b.id]">create</mat-icon>
+      <mat-icon (click)="openDeleteWindow(); carId = b.id">delete</mat-icon>
       <div *ngIf="deleteWindow" class="delete-alert">
         <h4>Delete this report?</h4>
         <button class="btn btn-primary" (click)="closeDeleteWindow()">Cancel</button>

@@ -2,7 +2,7 @@ import {Injectable, InjectionToken} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Car} from './car';
-import {Table} from './table';
+import {GetCar, Table} from './table';
 
 export const REST_URL = new InjectionToken('rest_url');
 const httpHeaders = {
@@ -28,5 +28,13 @@ export class CarService {
 
   deleteCar(id: number): Observable<Car> {
     return this.http.delete<Car>(`${this.baseUrl}/delete/` + id);
+  }
+
+  editCar(id: number): Observable<GetCar> {
+    return this.http.get<GetCar>(`${this.baseUrl}/edit/` + id);
+  }
+
+  updateCar(car: Car): Observable<Car> {
+    return this.http.put<Car>(`${this.baseUrl}/edit/${car.id}/update`, car, httpHeaders);
   }
 }
