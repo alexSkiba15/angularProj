@@ -5,8 +5,6 @@ export class Car {
   model: string;
   price: number;
   date: Date;
-  edit = false;
-  delete = false;
 
   constructor() {
     this.brand = this.brands[0];

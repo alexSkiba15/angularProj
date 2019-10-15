@@ -1,9 +1,9 @@
 import {RouterModule, Routes} from '@angular/router';
 import {CoreComponent} from './core/core.component';
-import {AddCarComponent} from './add-car/add-car.component';
 import {NgModule} from '@angular/core';
 import {NotFoundComponent} from './not-found/not-found.component';
-import {EditCarComponent} from './edit-car/edit-car.component';
+import {EditCarComponent} from './core/edit-car/edit-car.component';
+import {AddCarComponent} from './core/add-car/add-car.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/cars', pathMatch: 'full'},
@@ -15,7 +15,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
 export class AppRoutingModule {
 }

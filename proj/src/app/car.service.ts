@@ -27,11 +27,11 @@ export class CarService {
   }
 
   deleteCar(id: number): Observable<Car> {
-    return this.http.delete<Car>(`${this.baseUrl}/delete/` + id);
+    return this.http.delete<Car>(`${this.baseUrl}/delete/${id}`);
   }
 
   editCar(id: number): Observable<GetCar> {
-    return this.http.get<GetCar>(`${this.baseUrl}/edit/` + id);
+    return this.http.get<GetCar>(`${this.baseUrl}/edit/${id}`);
   }
 
   updateCar(car: Car): Observable<Car> {

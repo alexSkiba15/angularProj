@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 
 import {CoreComponent} from './core.component';
-import {AddCarComponent} from '../add-car/add-car.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from '../app.routing';
@@ -11,7 +10,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {MatIconModule} from '@angular/material';
 import {JwPaginationComponent} from 'jw-angular-pagination';
-import {EditCarComponent} from '../edit-car/edit-car.component';
+import {EditCarComponent} from './edit-car/edit-car.component';
+import {AddCarComponent} from './add-car/add-car.component';
 
 @NgModule({
   declarations: [CoreComponent, AddCarComponent, JwPaginationComponent, EditCarComponent],

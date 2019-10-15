@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CarService} from '../car.service';
+import {CarService} from '../../car.service';
 import {ActivatedRoute} from '@angular/router';
-import {Car} from '../car';
+import {Car} from '../../car';
 import {map} from 'rxjs/operators';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {YearValidators} from '../add-car/year.validators';
