@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Car} from '../../car';
 import {map} from 'rxjs/operators';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {YearValidators} from '../add-car/year.validators';
+import {YearValidators} from '../year.validators';
 import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
@@ -29,7 +29,8 @@ export class EditCarComponent implements OnInit {
         map(params => params.id))
       .subscribe((idCar) => {
         this.carId = idCar;
-      });
+        }, error => console.log(error)
+      );
     this.form = new FormGroup({
       selectBrand: new FormControl('BMW'),
       inputModel: new FormControl('', [
@@ -54,13 +55,14 @@ export class EditCarComponent implements OnInit {
   private reloadData() {
     this.carService.editCar(this.carId).subscribe(
       response => {
+        console.log(response);
         Object.assign(this.car, response.car);
         this.form.controls.selectBrand.setValue(this.car.brand);
         this.form.controls.inputModel.setValue(this.car.model);
         this.form.controls.inputPrice.setValue(this.car.price);
         this.form.controls.inputYear.setValue(this.car.date);
         this.spinner.hide();
-      }
+      }, error => console.log(error)
     );
   }
 

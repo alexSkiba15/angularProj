@@ -4,12 +4,14 @@ import {NgModule} from '@angular/core';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {EditCarComponent} from './core/edit-car/edit-car.component';
 import {AddCarComponent} from './core/add-car/add-car.component';
+import {OwnerComponent} from './core/owner/owner.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/cars', pathMatch: 'full'},
   {path: 'cars', component: CoreComponent},
   {path: 'cars/add', component: AddCarComponent},
   {path: 'cars/edit/:id', component: EditCarComponent},
+  {path: 'cars/owners', component: OwnerComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

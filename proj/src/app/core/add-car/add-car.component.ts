@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Car} from '../../car';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {YearValidators} from './year.validators';
+import {YearValidators} from '../year.validators';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {CarService} from '../../car.service';
 

@@ -5,8 +5,17 @@ export class Car {
   model: string;
   price: number;
   date: Date;
+  owner_id: number;
 
   constructor() {
     this.brand = this.brands[0];
   }
+}
+
+export class Owner {
+  id: number;
+  name: string;
+  surname: string;
+  age: number;
+  email: string;
 }

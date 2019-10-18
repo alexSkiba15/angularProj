@@ -12,9 +12,10 @@ import {MatIconModule} from '@angular/material';
 import {JwPaginationComponent} from 'jw-angular-pagination';
 import {EditCarComponent} from './edit-car/edit-car.component';
 import {AddCarComponent} from './add-car/add-car.component';
+import {OwnerComponent} from './owner/owner.component';
 
 @NgModule({
-  declarations: [CoreComponent, AddCarComponent, JwPaginationComponent, EditCarComponent],
+  declarations: [CoreComponent, AddCarComponent, JwPaginationComponent, EditCarComponent, OwnerComponent],
   imports: [
     BrowserModule,
     RouterModule,

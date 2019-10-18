@@ -1,8 +1,8 @@
 import {Injectable, InjectionToken} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Car} from './car';
-import {GetCar, Table} from './table';
+import {Car, Owner} from './car';
+import {GetCar, GetOwners, Table} from './table';
 
 export const REST_URL = new InjectionToken('rest_url');
 const httpHeaders = {
@@ -35,6 +35,10 @@ export class CarService {
   }
 
   updateCar(car: Car): Observable<Car> {
-    return this.http.put<Car>(`${this.baseUrl}/edit/${car.id}/update`, car, httpHeaders);
+    return this.http.put<Car>(`${this.baseUrl}/edit/${car.id}`, car, httpHeaders);
+  }
+
+  getOwnerCar(): Observable<GetOwners> {
+    return this.http.get<GetOwners>(`${this.baseUrl}/owners`);
   }
 }

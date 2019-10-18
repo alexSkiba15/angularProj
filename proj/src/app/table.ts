@@ -1,4 +1,4 @@
-import {Car} from './car';
+import {Car, Owner} from './car';
 
 export class Table {
   cars: Car[];
@@ -6,4 +6,9 @@ export class Table {
 
 export class GetCar {
   car: Car;
+}
+
+export class GetOwners {
+  owners: Owner[];
+  cars: Car[];
 }

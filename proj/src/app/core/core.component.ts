@@ -28,7 +28,8 @@ export class CoreComponent implements OnInit {
       data => {
         this.cars = data.cars;
         this.spinner.hide();
-      }
+      },
+      error => console.log(error)
     );
   }
 

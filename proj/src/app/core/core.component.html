@@ -15,7 +15,7 @@
   <tr *ngFor="let b of pageOfItems; let i = index">
     <td>{{i + 1}}</td>
     <td>{{b.brand}}</td>
-    <td>{{b.model}}</td>
+    <td routerLink="{{'owners/'}}" class="btn-link">{{b.model}}</td>
     <td>{{b.price | currency: 'USD':'symbol': '.2-2'}}</td>
     <td>{{b.date | date:('yyyy')}}</td>
     <td>
