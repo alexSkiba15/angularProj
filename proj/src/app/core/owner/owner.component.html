@@ -1,5 +1,4 @@
 <h1 class="text-center">Owners</h1>
-<button class="btn btn-primary" id="add-car-button" [routerLink]="['../add/']">New Car</button>
 <table class="table table-striped table-light text-center">
   <thead>
   <tr>
@@ -20,13 +19,20 @@
     <td>{{b.email}}</td>
     <td>
       <div *ngFor="let c of cars;">
-        <div *ngIf="c.owner_id === b.id">
-          {{c.model}}
+        <div *ngIf="c.ownerId === b.id">
+          {{'Model: ' + c.model}}
           {{c.brand}}
-          {{c.price | currency: 'USD':'symbol': '.2-2'}}
           {{c.date | date:('yyyy')}}
         </div>
       </div>
     </td>
   </tbody>
 </table>
+
+<ngx-spinner type="ball-spin-clockwise-fade"
+             [fullScreen]="true" bdOpacity=0.9
+             bdColor="#333"
+             size="medium"
+             color="#fff">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>

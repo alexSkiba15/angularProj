@@ -1,8 +1,8 @@
 import {Injectable, InjectionToken} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Car, Owner} from './car';
-import {GetCar, GetOwners, Table} from './table';
+import {Car} from './car';
+import {CarsDetailed, GetCar, GetOwners, Table} from './table';
 
 export const REST_URL = new InjectionToken('rest_url');
 const httpHeaders = {
@@ -23,22 +23,26 @@ export class CarService {
   }
 
   createCar(car: Car): Observable<Car> {
-    return this.http.post<Car>(`${this.baseUrl}/add`, car, httpHeaders);
+    return this.http.post<Car>(`${this.baseUrl}/view`, car, httpHeaders);
   }
 
   deleteCar(id: number): Observable<Car> {
-    return this.http.delete<Car>(`${this.baseUrl}/delete/${id}`);
+    return this.http.delete<Car>(`${this.baseUrl}/view/${id}`);
   }
 
   editCar(id: number): Observable<GetCar> {
-    return this.http.get<GetCar>(`${this.baseUrl}/edit/${id}`);
+    return this.http.get<GetCar>(`${this.baseUrl}/view/${id}`);
   }
 
   updateCar(car: Car): Observable<Car> {
-    return this.http.put<Car>(`${this.baseUrl}/edit/${car.id}`, car, httpHeaders);
+    return this.http.put<Car>(`${this.baseUrl}/view/${car.id}`, car, httpHeaders);
   }
 
-  getOwnerCar(): Observable<GetOwners> {
-    return this.http.get<GetOwners>(`${this.baseUrl}/owners`);
+  getCarsDetailed(): Observable<CarsDetailed> {
+    return this.http.get<CarsDetailed>(`${this.baseUrl}/owners`);
+  }
+
+  getOwners(): Observable<GetOwners> {
+    return this.http.get<GetOwners>(`${this.baseUrl}/view`);
   }
 }

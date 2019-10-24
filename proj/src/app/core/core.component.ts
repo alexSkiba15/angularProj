@@ -42,14 +42,16 @@ export class CoreComponent implements OnInit {
           this.spinner.hide();
           this.reloadData();
         },
-        error => console.log(error));
+        error => console.log(error)
+      );
   }
 
   closeDeleteWindow() {
     this.deleteWindow = false;
   }
 
-  openDeleteWindow() {
+  openDeleteWindow(id: number) {
+    this.carId = id;
     this.deleteWindow = true;
   }
 

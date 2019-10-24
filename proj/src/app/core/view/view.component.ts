@@ -1,36 +1,37 @@
 import {Component, OnInit} from '@angular/core';
-import {CarService} from '../../car.service';
-import {ActivatedRoute} from '@angular/router';
-import {Car} from '../../car';
-import {map} from 'rxjs/operators';
+import {Car, Owner} from '../../car';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {YearValidators} from '../year.validators';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {CarService} from '../../car.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-edit-car',
-  templateUrl: './edit-car.component.html',
-  styleUrls: ['./edit-car.component.css']
+  selector: 'app-add-car',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css']
 })
-export class EditCarComponent implements OnInit {
-  carId: number;
-  car = new Car();
-  carEdited = false;
-  form: FormGroup;
 
-  constructor(private carService: CarService,
-              private route: ActivatedRoute,
-              private spinner: NgxSpinnerService) { }
+export class ViewComponent implements OnInit {
+  car = new Car();
+  form: FormGroup;
+  carCreated: boolean;
+  carEdited = false;
+  edit = false;
+  create = false;
+  owners: Owner[];
+  carId: number;
+
+  constructor(private carService: CarService, private spinner: NgxSpinnerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.spinner.show();
     this.route.params
-      .pipe(
-        map(params => params.id))
       .subscribe((idCar) => {
-        this.carId = idCar;
+        this.carId = idCar.id;
         }, error => console.log(error)
       );
+    this.spinner.hide();
     this.form = new FormGroup({
       selectBrand: new FormControl('BMW'),
       inputModel: new FormControl('', [
@@ -47,31 +48,69 @@ export class EditCarComponent implements OnInit {
       inputYear: new FormControl('', [
         Validators.required,
         YearValidators.restrictedYear
-      ])
+      ]),
+      selectOwner: new FormControl()
     });
-    this.reloadData();
+    if (this.carId !== undefined) {
+      this.edit = true;
+      this.reviewDataEdit();
+    } else {
+      this.create = true;
+      this.reviewData();
+    }
   }
 
-  private reloadData() {
+  private reviewDataEdit() {
     this.carService.editCar(this.carId).subscribe(
       response => {
-        console.log(response);
         Object.assign(this.car, response.car);
+        this.owners = response.owners;
         this.form.controls.selectBrand.setValue(this.car.brand);
         this.form.controls.inputModel.setValue(this.car.model);
         this.form.controls.inputPrice.setValue(this.car.price);
         this.form.controls.inputYear.setValue(this.car.date);
+        this.form.controls.selectOwner.setValue(this.car.ownerId);
         this.spinner.hide();
       }, error => console.log(error)
     );
   }
 
+  reviewData() {
+    this.carService.getOwners()
+      .subscribe((data) => {
+          console.log(data.owners);
+          this.owners = data.owners;
+        },
+        error => console.log(error));
+  }
+
   onSubmit() {
     this.car.brand = this.form.controls.selectBrand.value;
     this.car.model = this.form.controls.inputModel.value;
-    this.car.date = this.form.controls.inputYear.value;
     this.car.price = this.form.controls.inputPrice.value;
-    this.updateCar();
+    this.car.date = this.form.controls.inputYear.value;
+    this.car.ownerId = this.form.controls.selectOwner.value;
+    this.createCar();
+  }
+
+  private createCar() {
+    if (this.carId != null) {
+      this.updateCar();
+    } else {
+      this.spinner.show();
+      setTimeout(() => {
+        this.carService.createCar(this.car)
+          .subscribe((data) => {
+              console.log(data);
+              this.carCreated = true;
+              this.create = false;
+              this.spinner.hide();
+            },
+            error => console.log(error));
+        this.car = new Car();
+      }, 1000);
+      this.form.reset({selectBrand: this.car.brand});
+    }
   }
 
   private updateCar() {
@@ -81,6 +120,7 @@ export class EditCarComponent implements OnInit {
         .subscribe((data) => {
             console.log(data);
             this.carEdited = true;
+            this.edit = false;
             this.spinner.hide();
           },
           error => console.log(error));

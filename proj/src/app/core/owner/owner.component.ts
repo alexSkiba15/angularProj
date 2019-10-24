@@ -11,11 +11,8 @@ import {Car, Owner} from '../../car';
 export class OwnerComponent implements OnInit {
   owners: Owner[];
   cars: Car[];
-  deleteWindow: boolean;
 
-  constructor(private carService: CarService, private spinner: NgxSpinnerService) {
-    this.deleteWindow = false;
-  }
+  constructor(private carService: CarService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.reloadData();
@@ -23,7 +20,7 @@ export class OwnerComponent implements OnInit {
 
   reloadData() {
     this.spinner.show();
-    this.carService.getOwnerCar().subscribe(
+    this.carService.getCarsDetailed().subscribe(
       data => {
         this.cars = data.cars;
         this.owners = data.owners;

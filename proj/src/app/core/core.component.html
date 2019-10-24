@@ -15,12 +15,12 @@
   <tr *ngFor="let b of pageOfItems; let i = index">
     <td>{{i + 1}}</td>
     <td>{{b.brand}}</td>
-    <td routerLink="{{'owners/'}}" class="btn-link">{{b.model}}</td>
+    <td>{{b.model}}</td>
     <td>{{b.price | currency: 'USD':'symbol': '.2-2'}}</td>
     <td>{{b.date | date:('yyyy')}}</td>
     <td>
       <mat-icon [routerLink]="['edit/', b.id]">create</mat-icon>
-      <mat-icon (click)="openDeleteWindow(); carId = b.id">delete</mat-icon>
+      <mat-icon (click)="openDeleteWindow(b.id)">delete</mat-icon>
       <div *ngIf="deleteWindow" class="delete-alert">
         <h4>Delete this report?</h4>
         <button class="btn btn-primary" (click)="closeDeleteWindow()">Cancel</button>
