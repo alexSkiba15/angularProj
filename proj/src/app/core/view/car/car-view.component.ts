@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {Car, Owner} from '../../car';
+import {Car, Owner} from '../../../car';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {YearValidators} from '../year.validators';
+import {YearValidators} from '../../year.validators';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {CarService} from '../../car.service';
+import {CarService} from '../../../car.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-add-car',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.css']
+  selector: 'app-add-edit-car',
+  templateUrl: './car-view.component.html',
+  styleUrls: ['./car-view.component.css']
 })
 
-export class ViewComponent implements OnInit {
+export class CarViewComponent implements OnInit {
   car = new Car();
   form: FormGroup;
   carCreated: boolean;

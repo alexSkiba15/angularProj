@@ -1,5 +1,5 @@
 <h1 class="text-center">Cars</h1>
-<button class="btn btn-primary" id="add-car-button" routerLink="{{'add/'}}">New Car</button>
+<button class="btn btn-primary" id="add-car-button" routerLink="{{'add-car/'}}">New Car</button>
 <table class="table table-striped table-light text-center">
   <thead>
   <tr>
@@ -19,10 +19,10 @@
     <td>{{b.price | currency: 'USD':'symbol': '.2-2'}}</td>
     <td>{{b.date | date:('yyyy')}}</td>
     <td>
-      <mat-icon [routerLink]="['edit/', b.id]">create</mat-icon>
+      <mat-icon [routerLink]="['edit-car/', b.id]">create</mat-icon>
       <mat-icon (click)="openDeleteWindow(b.id)">delete</mat-icon>
       <div *ngIf="deleteWindow" class="delete-alert">
-        <h4>Delete this report?</h4>
+        <h4>Delete this car?</h4>
         <button class="btn btn-primary" (click)="closeDeleteWindow()">Cancel</button>
         <button class="btn btn-danger" (click)="deleteCar()">Yes</button>
       </div>

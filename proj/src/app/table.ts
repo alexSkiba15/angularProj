@@ -17,3 +17,12 @@ export class CarsDetailed {
 export class GetOwners {
   owners: Owner[];
 }
+
+export class ResultResponse {
+  result: number;
+  error: string;
+}
+
+export class GetOwner {
+  owner: Owner;
+}

@@ -10,11 +10,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {MatIconModule} from '@angular/material';
 import {JwPaginationComponent} from 'jw-angular-pagination';
-import {ViewComponent} from './view/view.component';
+import {CarViewComponent} from './view/car/car-view.component';
 import {OwnerComponent} from './owner/owner.component';
+import {OwnerViewComponent} from './view/owner/owner-view.component';
 
 @NgModule({
-  declarations: [CoreComponent, ViewComponent, JwPaginationComponent, OwnerComponent],
+  declarations: [CoreComponent, CarViewComponent, JwPaginationComponent, OwnerComponent, OwnerViewComponent],
   imports: [
     BrowserModule,
     RouterModule,
