@@ -9,6 +9,7 @@ import {CoreModule} from './core/core.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatIconModule} from '@angular/material';
     CoreModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

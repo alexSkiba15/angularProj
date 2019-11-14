@@ -24,6 +24,14 @@ table {
   margin-right: 5%;
 }
 
+table td:nth-of-type(1) {
+  width: 100px;
+}
+
+table td {
+  width: 150px;
+}
+
 .delete-alert {
   position: fixed;
   z-index: 93123999;
@@ -43,4 +51,8 @@ table {
 
 .delete-alert button {
   margin-left: 5px; margin-top: 50px;
+}
+
+.action-button:hover {
+  cursor: pointer;
 }

@@ -6,7 +6,7 @@ import {Car, Owner} from '../../car';
 @Component({
   selector: 'app-owner',
   templateUrl: './owner.component.html',
-  styleUrls: ['./owner.component.css'],
+  styleUrls: ['.././core.component.css'],
 })
 export class OwnerComponent implements OnInit {
   owners: Owner[];

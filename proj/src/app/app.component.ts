@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {CarService} from './car.service';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'untitled';
+
+
+  constructor(private carService: CarService, private spinner: NgxSpinnerService) {
+  }
+
+  scraperCars() {
+    this.spinner.show();
+    this.carService.getScraper().subscribe(
+      data => {
+        if (data.result === 1) {
+          this.spinner.hide();
+        }
+      }, error => console.log(error)
+    );
+  }
 }

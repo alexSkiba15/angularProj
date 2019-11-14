@@ -27,11 +27,11 @@ export class CarService {
   }
 
   deleteCar(id: number): Observable<ResultResponse> {
-    return this.http.delete<ResultResponse>(`${this.baseUrl}/view/car/${id}`);
+    return this.http.delete<ResultResponse>(`${this.baseUrl}/view/car/${id}`, httpHeaders);
   }
 
   editCar(id: number): Observable<GetCar> {
-    return this.http.get<GetCar>(`${this.baseUrl}/view/car/${id}`);
+    return this.http.get<GetCar>(`${this.baseUrl}/view/car/${id}`, httpHeaders);
   }
 
   updateCar(car: Car): Observable<Car> {
@@ -39,11 +39,11 @@ export class CarService {
   }
 
   getCarsDetailed(): Observable<CarsDetailed> {
-    return this.http.get<CarsDetailed>(`${this.baseUrl}/owners`);
+    return this.http.get<CarsDetailed>(`${this.baseUrl}/owners`, httpHeaders);
   }
 
   getOwners(): Observable<GetOwners> {
-    return this.http.get<GetOwners>(`${this.baseUrl}/view/car`);
+    return this.http.get<GetOwners>(`${this.baseUrl}/view/car/`, httpHeaders);
   }
 
   createOwner(owner: Owner): Observable<ResultResponse> {
@@ -60,5 +60,9 @@ export class CarService {
 
   updateOwner(owner: Owner): Observable<Owner> {
     return this.http.put<Owner>(`${this.baseUrl}/view/owner/${owner.id}`, owner, httpHeaders);
+  }
+
+  getScraper(): Observable<ResultResponse> {
+    return this.http.get<ResultResponse>(`${this.baseUrl}/scraper_cars`, httpHeaders);
   }
 }

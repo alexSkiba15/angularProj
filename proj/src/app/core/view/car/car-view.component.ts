@@ -21,6 +21,8 @@ export class CarViewComponent implements OnInit {
   create = false;
   owners: Owner[];
   carId: number;
+  brandsCar = ['BMW', 'Audi', 'Opel', 'Porsche', 'Ford', 'Lexus', 'Mazda', 'Mitsubishi',
+    'Chery', 'Jac', 'Nissan', 'Renault', 'Ssangyong', 'Subaru', 'Toyota', 'Volkswagen', 'Geely'].sort();
 
   constructor(private carService: CarService, private spinner: NgxSpinnerService, private route: ActivatedRoute) { }
 

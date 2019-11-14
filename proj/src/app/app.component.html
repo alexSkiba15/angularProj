@@ -21,7 +21,17 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="{{'cars/add-owner'}}">Add Owner</a>
       </li>
+      <li class="nav-item">
+        <button id="btn-scraper" class="btn btn-danger" (click)="scraperCars()">Scrape Cars</button>
+      </li>
     </ul>
   </div>
 </nav>
 <router-outlet></router-outlet>
+<ngx-spinner type="ball-spin-clockwise-fade"
+             [fullScreen]="true" bdOpacity=0.9
+             bdColor="#333"
+             size="medium"
+             color="#fff">
+  <p style="color: white">Please wait</p>
+</ngx-spinner>

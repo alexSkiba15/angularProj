@@ -19,8 +19,8 @@
     <td>{{b.price | currency: 'USD':'symbol': '.2-2'}}</td>
     <td>{{b.date | date:('yyyy')}}</td>
     <td>
-      <mat-icon [routerLink]="['edit-car/', b.id]">create</mat-icon>
-      <mat-icon (click)="openDeleteWindow(b.id)">delete</mat-icon>
+      <mat-icon class="action-button" [routerLink]="['edit-car/', b.id]">create</mat-icon>
+      <mat-icon class="action-button" (click)="openDeleteWindow(b.id)">delete</mat-icon>
       <div *ngIf="deleteWindow" class="delete-alert">
         <h4>Delete this car?</h4>
         <button class="btn btn-primary" (click)="closeDeleteWindow()">Cancel</button>
@@ -31,7 +31,7 @@
 </table>
 
 <div class="btn-group float-right mr-5">
-  <jw-pagination pageSize="15" [items]="cars" (changePage)="onChangePage($event)"></jw-pagination>
+  <jw-pagination [items]="cars" (changePage)="onChangePage($event)"></jw-pagination>
 </div>
 
 <ngx-spinner type="ball-spin-clockwise-fade"
