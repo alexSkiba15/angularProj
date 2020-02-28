@@ -1,15 +1,16 @@
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: wheat;
+  background-color: #DCDCDC;
 }
 
 .table-striped>tbody>tr:nth-child(even)>td,
 .table-striped>tbody>tr:nth-child(even)>th {
-  background-color: #b0a089;
+  background-color: #8b8a8b;
 }
 
+
 .table-light>thead>tr>th{
-  background: #8b8a8b;
+  background: #808080;
 }
 
 #add-car-button {

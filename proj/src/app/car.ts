@@ -7,7 +7,7 @@ export class Car {
   ownerId: number;
 
   constructor() {
-    this.brand = 'BMW';
+    this.brand = 'Bmw';
   }
 }
 

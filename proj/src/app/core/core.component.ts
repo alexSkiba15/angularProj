@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Car} from '../car';
 import {CarService} from '../car.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-core',
@@ -11,15 +12,28 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class CoreComponent implements OnInit {
   cars: Car[];
   deleteWindow: boolean;
-  carId: number;
   pageOfItems: Array<Car>;
 
-  constructor(private carService: CarService, private spinner: NgxSpinnerService) {
+  constructor(private carService: CarService, private spinner: NgxSpinnerService, private dialog: MatDialog) {
     this.deleteWindow = false;
   }
 
   ngOnInit() {
     this.reloadData();
+  }
+
+  openDialog(car): void {
+    const dialogRef = this.dialog.open(DialogOverviewCarDeleteComponent, {
+      width: '250px',
+      data: {data: car}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != null) {
+        console.log(result);
+        this.deleteCar(result.id);
+      }
+    });
   }
 
   reloadData() {
@@ -33,11 +47,9 @@ export class CoreComponent implements OnInit {
     );
   }
 
-  deleteCar() {
-    console.log(this.carId);
-    this.closeDeleteWindow();
+  deleteCar(carId) {
     this.spinner.show();
-    this.carService.deleteCar(this.carId)
+    this.carService.deleteCar(carId)
       .subscribe(() => {
           this.spinner.hide();
           this.reloadData();
@@ -46,16 +58,23 @@ export class CoreComponent implements OnInit {
       );
   }
 
-  closeDeleteWindow() {
-    this.deleteWindow = false;
-  }
-
-  openDeleteWindow(id: number) {
-    this.carId = id;
-    this.deleteWindow = true;
-  }
-
   onChangePage(pageOfItems: Array<Car>) {
     this.pageOfItems = pageOfItems;
+  }
+}
+
+@Component({
+  selector: 'app-dialog-overview-car.delete',
+  templateUrl: 'dialog-overview-car.delete.html',
+})
+export class DialogOverviewCarDeleteComponent {
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewCarDeleteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Car) {
+    console.log(data);
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

@@ -10,6 +10,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import {CookieService} from 'ngx-cookie-service';
+import {AuthComponent} from './core/auth/auth.component';
+import {CoreComponent, DialogOverviewCarDeleteComponent} from './core/core.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     MatIconModule,
     NgxSpinnerModule
   ],
-  providers: [],
+  entryComponents: [AuthComponent, CoreComponent, DialogOverviewCarDeleteComponent],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -21,8 +21,8 @@ export class CarViewComponent implements OnInit {
   create = false;
   owners: Owner[];
   carId: number;
-  brandsCar = ['BMW', 'Audi', 'Opel', 'Porsche', 'Ford', 'Lexus', 'Mazda', 'Mitsubishi',
-    'Chery', 'Jac', 'Nissan', 'Renault', 'Ssangyong', 'Subaru', 'Toyota', 'Volkswagen', 'Geely'].sort();
+  brandsCar = ['Bmw', 'Audi', 'Opel', 'Porsche', 'Ford', 'Lexus', 'Mazda', 'Mitsubishi', 'Daewoo',
+    'Chery', 'Jac', 'Nissan', 'Renault', 'Ssangyong', 'Subaru', 'Toyota', 'Volkswagen', 'Geely', 'Hyundai'].sort();
 
   constructor(private carService: CarService, private spinner: NgxSpinnerService, private route: ActivatedRoute) { }
 
@@ -33,7 +33,6 @@ export class CarViewComponent implements OnInit {
         this.carId = idCar.id;
         }, error => console.log(error)
       );
-    this.spinner.hide();
     this.form = new FormGroup({
       selectBrand: new FormControl('BMW'),
       inputModel: new FormControl('', [
@@ -80,7 +79,7 @@ export class CarViewComponent implements OnInit {
   reviewData() {
     this.carService.getOwners()
       .subscribe((data) => {
-          console.log(data.owners);
+          this.spinner.hide();
           this.owners = data.owners;
         },
         error => console.log(error));

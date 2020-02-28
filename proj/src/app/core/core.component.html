@@ -16,16 +16,11 @@
     <td>{{i + 1}}</td>
     <td>{{b.brand}}</td>
     <td>{{b.model}}</td>
-    <td>{{b.price | currency: 'USD':'symbol': '.2-2'}}</td>
+    <td> ₴ {{b.price | currency: '': '': '.2-2'}}</td>
     <td>{{b.date | date:('yyyy')}}</td>
     <td>
       <mat-icon class="action-button" [routerLink]="['edit-car/', b.id]">create</mat-icon>
-      <mat-icon class="action-button" (click)="openDeleteWindow(b.id)">delete</mat-icon>
-      <div *ngIf="deleteWindow" class="delete-alert">
-        <h4>Delete this car?</h4>
-        <button class="btn btn-primary" (click)="closeDeleteWindow()">Cancel</button>
-        <button class="btn btn-danger" (click)="deleteCar()">Yes</button>
-      </div>
+      <mat-icon class="action-button" (click)="openDialog(b)">delete</mat-icon>
     </td>
   </tbody>
 </table>
