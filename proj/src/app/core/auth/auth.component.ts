@@ -1,10 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {CarService} from '../../car.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {DialogOverviewCarDeleteComponent} from '../core.component';
+import {MatDialog} from '@angular/material/dialog';
 
 interface TokenObj {
   token: string;
@@ -53,11 +53,11 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log('here');
-    // const mrToken = this.cookieService.get('mr-token');
-    // if (mrToken) {
-    //   this.router.navigate(['/cars']);
-    // }
+    console.log('here');
+    const mrToken = this.cookieService.get('mr-token');
+    if (mrToken) {
+      this.router.navigate(['/cars']);
+    }
   }
   saveForm() {
     if (!this.registerMode) {

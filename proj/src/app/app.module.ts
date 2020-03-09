@@ -8,7 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {CoreModule} from './core/core.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthComponent} from './core/auth/auth.component';

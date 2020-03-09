@@ -31,7 +31,7 @@
   </div>
   <div class="form-group">
     <label for="InputAge">Age</label>
-    <input type="number" class="form-control mx-auto" name="year" id="InputAge"
+    <input type="number" class="form-control mx-auto" name="age" id="InputAge"
            placeholder="Enter owner age " formControlName="inputAge">
     <div
       *ngIf="form.controls.inputAge.invalid && form.controls.inputAge.touched
@@ -41,12 +41,12 @@
     <div *ngIf="!(form.controls.inputAge.value === '')
                   && form.controls.inputAge.touched
                   && form.controls.inputAge.errors">
-      <span>Year cannot be more than 100 and less 18</span>
+      <span>Age cannot be more than 100 and less 18</span>
     </div>
   </div>
   <div class="form-group">
     <label for="InputEmail">Email</label>
-    <input type="email" class="form-control mx-auto" name="year" id="InputEmail"
+    <input type="email" class="form-control mx-auto" name="email" id="InputEmail"
            placeholder="Enter email" formControlName="inputEmail">
     <div
       *ngIf="form.controls.inputEmail.invalid && form.controls.inputEmail.touched

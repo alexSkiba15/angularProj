@@ -1,12 +1,9 @@
 <div mat-dialog-content>
   Do you want delete this car?
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.brand">
-  </mat-form-field>
 </div>
 
 <br>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-raised-button [mat-dialog-close]="data" color="warn" cdkFocusInitial>Ok</button>
+  <button mat-raised-button (click)="onYesClick(data)" color="warn" cdkFocusInitial>Ok</button>
 </div>

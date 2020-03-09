@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Car} from '../car';
 import {CarService} from '../car.service';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-core',
@@ -25,7 +25,7 @@ export class CoreComponent implements OnInit {
   openDialog(car): void {
     const dialogRef = this.dialog.open(DialogOverviewCarDeleteComponent, {
       width: '250px',
-      data: {data: car}
+      data: car
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -71,10 +71,14 @@ export class DialogOverviewCarDeleteComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewCarDeleteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Car) {
-    console.log(data);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onYesClick(data) {
+    this.dialogRef.close(data);
+    return true;
   }
 }
